@@ -12,4 +12,5 @@
 * [Next repo](https://github.com/vercel/next.js/blob/canary/examples/amp/components/Layout.tsx)
 * [Tanstack Query](https://github.com/TanStack/query/blob/main/examples/react/algolia/src/SearchResults.tsx)
 * [Redux toolkit](https://github.com/reduxjs/redux-toolkit/blob/master/examples/query/react/advanced/src/Pokemon.tsx)
-* [15 Most Popular GitHub Repositories](https://www.hostinger.com/tutorials/most-popular-github-repos)
+* [7 Awesome React GitHub Repositories You Should Know](https://blog.bitsrc.io/7-awesome-github-repositories-to-dig-into-react-js-88ab41c089c5)
+* [19 GitHub Repositories to Become a React Master](https://dev.to/madza/19-github-repositories-to-become-a-react-master-379n)
