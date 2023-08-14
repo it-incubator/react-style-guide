@@ -1,6 +1,6 @@
 export default {
-    logo: <span>My Nextra Documentation</span>,
+    logo: <span>React style guide</span>,
     project: {
-        link: 'https://github.com/shuding/nextra'
+        link: 'https://github.com/safronman/react-style-guide'
     }
 }
