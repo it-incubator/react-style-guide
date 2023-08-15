@@ -1,1 +1,1 @@
-#### Naming
+# React style guide
