@@ -1,6 +1,6 @@
 #### Структура папок / нейминг
 
-##### ⏺️ Используйте camelCase для имен папок и некомпонентных файлов и PascalCase для имен компонентных файлов
+##### ️ Use camelCase for folder and non-component file names and PascalCase for component file names
 
 ❗Создать тестовый публичный репозиторий в котором должен быть код (не обязательно рабочий)
 
@@ -77,4 +77,29 @@
 				└── Cards.module.css
 ```
 
+
+##### Use camelCase for JavaScript data types like variables, arrays, objects, functions, etc.
+```ts
+const users = []
+const getRandomNumber = ()=> { ... }
+```
+
+##### Types, Interface
+1. Что использовать type или interface?
+
+* Предлагаю использовать types, по причине того, что type позволяют использовать [utility types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+* Однако google style считает иначе. [Ссылка](https://google.github.io/styleguide/tsguide.html#interfaces-vs-type-aliases)
+
+2. Нейминг типов
+
+* При именовании типов не пишем в конце type. Ни в документации, ни в проектах не нашел такого нейминга
+```ts
+✅
+type Props = {}
+const user: User = {}
+
+⛔
+type PropsType = {}
+const user: UserType = {}
+```
 
