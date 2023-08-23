@@ -3,5 +3,6 @@
   "links": "Ссылки на источники",
   "naming": "Naming conventions",
   "ts": "TypeScript",
-  "export": "Export default"
+  "export": "Export default",
+  "common": "Общие правила"
 }
