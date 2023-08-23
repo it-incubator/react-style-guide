@@ -23,3 +23,18 @@ const ButtonList = () => {
   );
 };
 ```
+
+##### 🔥 Prefer destructuring properties
+Предпочтительнее деструктурировать свойства.
+
+```ts copy showLineNumbers
+// ✅
+const Button = (props) => {
+	return <button>{props.text}</button>;
+};
+
+// ❌
+const Button = ({text}) => {
+	return <button>{text}</button>;
+};
+```

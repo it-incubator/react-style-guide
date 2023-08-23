@@ -1,6 +1,6 @@
 #### Структура папок / нейминг
 
-##### ️ Use camelCase for folder and non-component file names and PascalCase for component file names
+##### ️🔥 Use camelCase for folder and non-component file names and PascalCase for component file names
 
 ❗Создать тестовый публичный репозиторий в котором должен быть код (не обязательно рабочий)
 
@@ -78,13 +78,13 @@
 ```
 
 
-##### Use camelCase for JavaScript data types like variables, arrays, objects, functions, etc.
+##### 🔥 Use camelCase for JavaScript data types like variables, arrays, objects, functions, etc.
 ```ts
 const users = []
 const getRandomNumber = ()=> { ... }
 ```
 
-##### Types, Interface
+##### 🔥 Types, Interface
 1. Что использовать type или interface?
 
 * Предлагаю использовать types, по причине того, что type позволяют использовать [utility types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
