@@ -1,4 +1,6 @@
-#### 🔥 Links
+## Ссылки на источники
+
+### 🔥 Links
 
 * [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
 * [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
@@ -8,7 +10,7 @@
 * [Мои заметки из confluence](https://it-incubator.atlassian.net/wiki/spaces/SPP/pages/244219922)
 
 
-#### 🔥 Repositories
+### 🔥 Repositories
 * [React](https://github.com/facebook/react/blob/main/fixtures/ssr/src/components/App.js)
 * [Next](https://github.com/vercel/next.js/blob/canary/examples/amp/components/Layout.tsx)
 * [Tanstack Query](https://github.com/TanStack/query/blob/main/examples/react/algolia/src/SearchResults.tsx)

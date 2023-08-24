@@ -1,9 +1,11 @@
 {
   "index": "Главная страница",
-  "built-in": "Built-in components",
   "links": "Ссылки на источники",
   "naming": "Naming conventions",
   "ts": "TypeScript",
   "export": "Export default",
-  "common": "Общие правила"
+  "common": "Общие правила",
+  "built-in": {
+    "display": "hidden"
+  }
 }
