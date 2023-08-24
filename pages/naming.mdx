@@ -1,0 +1,134 @@
+import { FileTree} from "nextra/components";
+
+### 🔥 Use camelCase for folder and non-component file names and PascalCase for component file names
+
+❗Создать тестовый публичный репозиторий в котором должен быть код (не обязательно рабочий)
+
+🔗 [Structure Files as Feature Folders with Single-File Logic](https://redux.js.org/style-guide/#structure-files-as-feature-folders-with-single-file-logic)
+
+🔗 [Redux toolkit query](https://redux-toolkit.js.org/rtk-query/usage/examples)
+
+<FileTree>
+    <FileTree.Folder name="assets">
+        <FileTree.Folder name="images">
+            <FileTree.File name="mainBg.webp" />
+            <FileTree.File name="cat.jpg" />
+            <FileTree.File name="defaultAvatar.svg" />
+        </FileTree.Folder>
+        <FileTree.Folder name="icons">
+            <FileTree.File name="camera.svg" />
+            <FileTree.File name="logo.svg" />
+            <FileTree.File name="eye.tsx" />
+        </FileTree.Folder>
+        <FileTree.Folder name="fonts"></FileTree.Folder>
+    </FileTree.Folder>
+    <FileTree.Folder name="common" defaultOpen>
+        <FileTree.Folder name="components">
+            <FileTree.Folder name="DropDown">
+                <FileTree.File name="DropDown.tsx" />
+                <FileTree.File name="DropDown.module.css" />
+            </FileTree.Folder>
+            <FileTree.Folder name="Slider">
+                <FileTree.File name="Slider.tsx" />
+                <FileTree.File name="Slider.module.css" />
+            </FileTree.Folder>
+            <FileTree.File name="index.ts" />
+        </FileTree.Folder>
+        <FileTree.Folder name="hooks">
+            <FileTree.File name="useDebounce.ts" />
+            <FileTree.File name="useLocalStorage.ts" />
+            <FileTree.File name="index.ts" />
+        </FileTree.Folder>
+        <FileTree.Folder name="utils">
+            <FileTree.File name="handleServerAppError.ts" />
+            <FileTree.File name="handleServerNetworkError.ts" />
+            <FileTree.File name="index.ts" />
+        </FileTree.Folder>
+        <FileTree.Folder name="enums">
+            <FileTree.File name="enums.ts" />
+            <FileTree.File name="index.ts" />
+        </FileTree.Folder>
+        <FileTree.Folder name="types">
+            <FileTree.File name="types.ts" />
+            <FileTree.File name="index.ts" />
+        </FileTree.Folder>
+    </FileTree.Folder>
+    <FileTree.Folder name="features" defaultOpen>
+        <FileTree.Folder name="app">
+            <FileTree.Folder name="tests">
+                <FileTree.File name="appSlice.test.ts" />
+            </FileTree.Folder>
+            <FileTree.File name="store.ts" />
+            <FileTree.File name="App.tsx" />
+            <FileTree.File name="appSlice.ts" />
+            <FileTree.File name="appSelectors.ts" />
+        </FileTree.Folder>
+        <FileTree.Folder name="auth" defaultOpen>
+            <FileTree.Folder name="api" defaultOpen>
+                <FileTree.File name="authApi.ts" />
+                <FileTree.File name="authApi.types.ts" />
+            </FileTree.Folder>
+            <FileTree.Folder name="lib" defaultOpen>
+                <FileTree.File name="useLogin.ts" />
+            </FileTree.Folder>
+            <FileTree.Folder name="model" defaultOpen>
+                <FileTree.Folder name="tests">
+                    <FileTree.File name="authSlice.test.ts" />
+                </FileTree.Folder>
+                <FileTree.File name="authSlice.ts" />
+                <FileTree.File name="authSelectors.ts" />
+            </FileTree.Folder>
+            <FileTree.Folder name="ui" defaultOpen>
+                <FileTree.Folder name="Login">
+                    <FileTree.File name="Login.tsx" />
+                    <FileTree.File name="Login.module.css" />
+                </FileTree.Folder>
+                <FileTree.Folder name="Logout">
+                    <FileTree.File name="Logout.tsx" />
+                    <FileTree.File name="Logout.module.css" />
+                </FileTree.Folder>
+
+            </FileTree.Folder>
+        </FileTree.Folder>
+        <FileTree.Folder name="cards">
+            <FileTree.Folder name="services">
+                <FileTree.File name="cardsApi.ts" />
+                <FileTree.File name="cardsApi.types.ts" />
+            </FileTree.Folder>
+            <FileTree.Folder name="ui">
+                <FileTree.Folder name="Cards">
+                    <FileTree.File name="Cards.tsx" />
+                    <FileTree.File name="Cards.module.css" />
+                </FileTree.Folder>
+            </FileTree.Folder>
+        </FileTree.Folder>
+    </FileTree.Folder>
+</FileTree>
+
+
+
+### 🔥 Use camelCase for JavaScript data types like variables, arrays, objects, functions, etc.
+```ts
+const users = []
+const getRandomNumber = ()=> { ... }
+```
+
+### 🔥 Types, Interface
+1. Что использовать type или interface?
+
+* Предлагаю использовать types, по причине того, что type позволяют использовать [utility types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+* Однако google style считает иначе. [Ссылка](https://google.github.io/styleguide/tsguide.html#interfaces-vs-type-aliases)
+
+2. Нейминг типов
+
+* При именовании типов не пишем в конце type. Ни в документации, ни в проектах не нашел такого нейминга
+```ts
+✅
+type Props = {}
+const user: User = {}
+
+⛔
+type PropsType = {}
+const user: UserType = {}
+```
+
