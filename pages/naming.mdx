@@ -1,7 +1,59 @@
 import { FileTree} from "nextra/components";
 
-### 🔥 Use camelCase for folder and non-component file names and PascalCase for component file names
+### 🔥 Для компонент используем PascalCase, для всего остального camelCase
+| ⚡ Type   | ✅ Good   | ❌ Bad  |
+| :-----  | :----- | :---- |
+| components  | `ImagePreview.tsx`   | `index.tsx`, `image-preview.tsx`, `image_preview.tsx` |
+| slice  | `appSlice.ts` | `app-slice.ts` |
+| selectors  | `appSelectors.ts`   | `app-selectors.ts` |
+| utils  | `handleServerAppError.ts`   | `handle-server-app-error.ts` |
+| hooks  | `useDebounce.ts`   | `use-debounce.ts` |
+| api  | `authApi.ts`   | `auth-api.ts`, `authAPI.ts` |
 
+
+### 🔥 Для нейминга переменных (массивов, объектов, функций) используем camelCase
+| ⚡ Type   | ✅ Good   | ❌ Bad  |
+| :-----  | :----- | :---- |
+| array  | `const users = []`  | `const Users = []` |
+| function  | `const getRandomNumber` | `const GetRandomNumber`, `const get-random-number` |
+
+### 🔥 Нейминг типов (type)
+* ❗ Т.к. пропсы мы не экпортируем предлагаю их называть `Props`
+* ❗ Не пишем в конце Type
+
+| ⚡ Type   | ✅ Good   | ❌ Bad  |
+| :-----  | :----- | :---- |
+| props  | `Props` | `PropsType`, `UserProps`, `UserPropsType` |
+| типы, которые есть в проекте  | `User` | `UserType` |
+
+
+### 🔥Переменные всегда называйте осознанно
+```ts
+// ❌ Избегайте однобуквенных переменных (в цикле for допустимо)
+const n = 'Max';
+// ✅
+const name = 'Max';
+
+
+// ❌ Избегайте аббревиатур
+const sof = 'Sunday';
+// ✅
+const startOfWeek = 'Sunday';
+
+
+// ❌ Избегайте бесмыслленых имен
+const foo = false;
+// ✅
+const appInit = false;
+
+
+// ❌ Избегайте названий переменных с нижним подчеркиваем.
+const _getUser = ()=>{};
+// ✅
+const getUser = ()=>{};
+```
+
+### 🔥 Структура проекта
 ❗Создать тестовый публичный репозиторий в котором должен быть код (не обязательно рабочий)
 
 🔗 [Structure Files as Feature Folders with Single-File Logic](https://redux.js.org/style-guide/#structure-files-as-feature-folders-with-single-file-logic)
@@ -106,54 +158,3 @@ import { FileTree} from "nextra/components";
 </FileTree>
 
 
-
-### 🔥 Use camelCase for JavaScript data types like variables, arrays, objects, functions, etc.
-```ts
-const users = []
-const getRandomNumber = ()=> { ... }
-```
-
-### 🔥 Types, Interface
-1. Что использовать type или interface?
-
-* Предлагаю использовать types, по причине того, что type позволяют использовать [utility types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
-* Однако google style считает иначе. [Ссылка](https://google.github.io/styleguide/tsguide.html#interfaces-vs-type-aliases)
-
-2. Нейминг типов
-
-* При именовании типов не пишем в конце type. Ни в документации, ни в проектах не нашел такого нейминга
-```ts
-✅
-type Props = {}
-const user: User = {}
-
-❌
-type PropsType = {}
-const user: UserType = {}
-```
-
-### 🔥Переменным всегда называйте осознано
-```ts
-// ❌ Избегайте однобуквенных переменных (в цикле for допустимо)
-const n = 'Max';
-// ✅
-const name = 'Max';
-
-
-// ❌ Избегайте аббревиатур
-const sof = 'Sunday';
-// ✅
-const startOfWeek = 'Sunday';
-
-
-// ❌ Избегайте бесмыслленых имен
-const foo = false;
-// ✅
-const appInit = false;
-
-
-// ❌ Избегайте названий переменных с нижним подчеркиваем.
-const _getUser = ()=>{};
-// ✅
-const getUser = ()=>{};
-```
