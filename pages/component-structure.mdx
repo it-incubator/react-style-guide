@@ -1,9 +1,9 @@
 ## Структура компонента
 
 #### ⚡ Чтобы все файлы компонентов были согласованы, следуйте следующей схеме:
-```ts showLineNumbers
+```tsx showLineNumbers
 // 1. Imports
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 // 2. Types
 type Props = {
@@ -54,3 +54,42 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
   );
 };
 ```
+### 🔥 [Кастомный хук](https://react.dev/learn/reusing-logic-with-custom-hooks)
+⚡ Если логики в компоненте больше 20 строк выносим логику в кастомный хук
+
+import { Tabs, Tab } from 'nextra/components'
+
+<Tabs items={['Login.tsx', 'useLogin.ts']}>
+    <Tab>
+        ```tsx copy showLineNumbers filename="Login.tsx"
+        const Login = () => {
+            const isLoggedIn = useSelector(selectIsLoggedIn);
+
+            const {formik} = useLogin();
+
+            if (isLoggedIn) {
+                return <Navigate to = {"/"} />;
+            }
+
+            return (
+                <div>JSX</div>
+            );
+    }
+    ```
+    </Tab>
+    <Tab>
+    ```tsx copy showLineNumbers filename="useLogin.js"
+    const useLogin = () => {
+        const {login} = useActions(authThunks);
+
+        const formik = useFormik({
+            validate: (values) => {},
+            initialValues: {},
+            onSubmit: () => { },
+        });
+
+        return {formik};
+    };
+    ```
+    </Tab>
+</Tabs>
