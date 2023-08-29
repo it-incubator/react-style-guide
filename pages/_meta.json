@@ -1,11 +1,12 @@
 {
   "index": "Главная страница",
   "links": "Ссылки на источники",
-  "naming": "Naming conventions",
-  "ts": "TypeScript",
-  "export": "Export default",
   "common": "Общие правила",
+  "naming": "Нейминг",
+  "ts": "TypeScript",
   "component-structure": "Структура компонента",
+  "comments": "Комментарии",
+  "export": "Export default",
   "built-in": {
     "display": "hidden"
   }

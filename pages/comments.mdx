@@ -1,0 +1,31 @@
+### 🔥 Общие рекомендации по написанию комментариев
+* Не используйте комментарии для описания очевидного. Комментируйте только те блоки кода, которые могут быть непонятными или сложными для других разработчиков
+* Избегайте написания слишком много комментариев. Слишком много комментариев может сделать код неразборчивым и трудным для чтения
+* Если кусок кода взяли с интернета (stackoverflow, medium и пр.), то не стесняйтесь оставить ссылку в том месте где это используется.
+[Например](https://stackoverflow.com/questions/35547835/how-to-create-txt-file-in-javascript/35548142#35548142)
+* Пишите комментарии на английском языке
+* Для написания комментариев пользуйтесь [JSDoc](https://jsdoc.app/)
+
+```ts showLineNumbers filename="handleServerNetworkError.ts
+/**
+ * Handles network errors from the server and dispatches an action to set the app error.
+ *
+ * @param {unknown} err - An error that occurred when sending a request to the server.
+ * @param {AppDispatch} dispatch - The dispatch function from the Redux store.
+ * @returns {void}
+ */
+const handleServerNetworkError = (err: unknown, dispatch: AppDispatch): void => {
+  let errorMessage = "Some error occurred";
+  
+  if (axios.isAxiosError(err)) {
+    errorMessage = err.response?.data?.message || err?.message || errorMessage;
+  } else if (err instanceof Error) {
+    errorMessage = `Native error: ${err.message}`;
+  } else {
+    errorMessage = JSON.stringify(err);
+  }
+
+  dispatch(appActions.setAppError({ error: errorMessage }));
+};
+
+```
