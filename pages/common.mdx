@@ -141,5 +141,17 @@ return (
 </FileTree.Folder>
 
 
+### 🔥 Imports
+* Если работаем с React (CRA), то используем абсолютные пути
+``` json showLineNumbers filename="tsconfig.json" {4}
+{
+  "compilerOptions": {
+    "target": "es5",
+    "baseUrl": "src"
+}
+```
+
+* Если пишет в NEXT.JS, то используем alias
+
 ### ❌ Прописать про избыточную оптимизацию (useMemo, useCallback и пр.)
 [Передозировка useMemo](https://edvins.io/usememo-overdose)
