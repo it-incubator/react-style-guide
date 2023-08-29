@@ -1,0 +1,56 @@
+## Структура компонента
+
+#### ⚡ Чтобы все файлы компонентов были согласованы, следуйте следующей схеме:
+```ts showLineNumbers
+// 1. Imports
+import { FC, useEffect } from "react";
+
+// 2. Types
+type Props = {
+  todolist: TodolistDomainType;
+  tasks: TaskType[];
+};
+
+// 3. Additional variables
+// Если константа используется только в данной компоненте, то оставляем ее здесь же
+// Если используется во многих местах приложения, то выносим ее в `common/constants`
+const SOME_CONSTANT = "something";
+
+// 4. Деструктуризация пропсов
+export const Todolist: FC<Props> = ({ todolist, tasks }) => {
+  // ❗ Данную логику лучше выносить в кастомный хук
+  // 4.1. Объявление переменных
+  // 4.2. Разделяем логически связанные части
+  const [state, setState] = useState(false)
+  const [user, setUser] = useState<string | null>(null)
+
+  const { fetchTasks, addTask } = useActions(tasksThunks);
+	
+  const { token } = useParams<{token?: string}>();
+
+  // 4.3. Effects
+  useEffect(() => {
+    fetchTasks(todolist.id);
+  }, []);
+
+  // 4.4. Функции
+  const addTaskCallBack = (title: string) => {
+    return addTask({ title, todolistId: todolist.id }).unwrap();
+  };
+	
+  // 4.5. Функции обработчики называем с handler в конце
+  const testHandler = () => {
+    // code
+  };
+		
+  return (
+    <>
+      <TodolistTitle todolist={todolist} />
+      <AddItemForm addItem={addTaskCallBack} />
+      <Tasks todolist={todolist} tasks={tasks} />
+      <FilterTasksButtons todolist={todolist} />
+      <button onClick={testHandler}>test</button>
+    </>
+  );
+};
+```

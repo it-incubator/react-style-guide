@@ -5,6 +5,7 @@
   "ts": "TypeScript",
   "export": "Export default",
   "common": "Общие правила",
+  "component-structure": "Структура компонента",
   "built-in": {
     "display": "hidden"
   }
