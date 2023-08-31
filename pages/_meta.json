@@ -1,7 +1,7 @@
 {
   "index": "Главная страница",
-  "common": "Общие правила",
   "naming": "Нейминг",
+  "common": "Общие правила",
   "ts": "TypeScript",
   "component-structure": "Структура компонента",
   "comments": "Комментарии",
