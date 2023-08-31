@@ -1,6 +1,5 @@
 {
   "index": "Главная страница",
-  "links": "Ссылки на источники",
   "common": "Общие правила",
   "naming": "Нейминг",
   "ts": "TypeScript",
@@ -8,6 +7,9 @@
   "comments": "Комментарии",
   "export": "Export default",
   "built-in": {
+    "display": "hidden"
+  },
+  "links": {
     "display": "hidden"
   }
 }
