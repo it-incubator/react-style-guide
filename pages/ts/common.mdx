@@ -2,6 +2,22 @@ import {Callout} from 'nextra/components'
 
 ### 🔥 [Any vs unknown](https://google.github.io/styleguide/tsguide.html#any-unknown)
 ⚡ Стараемся не использовать `any`. `Unknown` предпочтительнее чем `any`.
+```ts showLineNumbers copy
+function f(a: any) {
+    return a + 100
+}
+
+
+function f(a: unknown) {
+  if (typeof a === 'number') {
+    return a + 100
+  } else {
+    return 0
+  }
+}
+```
+
+Пример реального использования
 ```ts showLineNumbers /err: unknown/
 const handleServerNetworkError = (err: unknown, dispatch: AppDispatch):void => {
   let errorMessage = "Some error occurred";
@@ -43,8 +59,9 @@ const minutesToHHMM = (minutes: number): string => {
 
 
 ### 🔥 Что использовать type или interface?
-* Предлагаю использовать `types`, по причине того, что type позволяют использовать [utility types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
-* Однако google style считает [иначе](https://google.github.io/styleguide/tsguide.html#interfaces-vs-type-aliases)
+* Предлагаю использовать `types` по дефолту, а `interface` в случае необходимости.
+[видео](https://youtu.be/zM9UPcIyyhQ?si=fAIJVNTf8gUsxDsI)
+* Однако google style предлагает [иначе](https://google.github.io/styleguide/tsguide.html#interfaces-vs-type-aliases)
 
 
 ### 🔥 [Nullable/undefined type aliases](https://google.github.io/styleguide/tsguide.html#nullableundefined-type-aliases)

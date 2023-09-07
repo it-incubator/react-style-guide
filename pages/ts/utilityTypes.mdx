@@ -1,0 +1,73 @@
+## [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+### ⚡1. Partial
+``` ts showLineNumbers copy filename="partial.ts"
+type UserType = {
+    name: string
+    age: number
+    isMarried: boolean
+}
+
+type UtilityType = Partial<UserType>
+```
+![](./images/partial.webp)
+
+### ⚡2. Required
+``` ts showLineNumbers copy filename="partial.ts"
+type UserType = {
+    name?: string
+    age?: number
+    isMarried?: boolean
+}
+
+type UtilityType = Required<UserType>
+```
+![](./images/required.webp)
+
+
+### ⚡3. Omit
+``` ts showLineNumbers copy filename="partial.ts"
+type UserType = {
+    name: string
+    age: number
+    isMarried: boolean
+}
+
+type UtilityType = Omit<UserType, 'name' | 'isMarried'>
+```
+![](./images/omit.webp)
+
+
+### ⚡4. Pick
+``` ts showLineNumbers copy filename="partial.ts"
+type UserType = {
+    name: string
+    age: number
+    isMarried: boolean
+}
+
+type UtilityType = Omit<UserType, 'name' | 'isMarried'>
+```
+![](./images/pick.webp)
+
+
+### ⚡5. Record
+``` ts showLineNumbers copy filename="partial.ts"
+export type TasksStateType = {
+  [key: string]: TaskType[]
+}
+
+export type TasksStateType2 = Record<string, TaskType[]>
+
+
+// Как типизировать объект в котором свойства и значения могут быть любые ?
+
+const Object = {
+  a1: "a1",
+  b2: 2,
+  c9: true,
+}
+
+type ObjectType = Record<string, unknown>
+```
+

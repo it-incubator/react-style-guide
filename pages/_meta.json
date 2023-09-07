@@ -3,7 +3,6 @@
   "format": "Prettier, eslint, stylelint",
   "naming": "Нейминг",
   "common": "Общие правила",
-  "enums": "Enums",
   "component-structure": "Структура компонента",
   "ts": "Typescript",
   "comments": "Комментарии",
