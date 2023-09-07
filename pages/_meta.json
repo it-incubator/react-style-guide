@@ -3,9 +3,11 @@
   "naming": "Нейминг",
   "common": "Общие правила",
   "ts": "TypeScript",
+  "enums": "Enums",
   "component-structure": "Структура компонента",
   "comments": "Комментарии",
   "export": "Export default",
+  "format": "Prettier, eslint, stylelint",
   "built-in": {
     "display": "hidden"
   },

@@ -1,4 +1,4 @@
-import { FileTree} from "nextra/components";
+import { FileTree } from "nextra/components";
 
 ## [Нейминг](https://google.github.io/styleguide/tsguide.html#identifiers)
 
@@ -9,6 +9,11 @@ import { FileTree} from "nextra/components";
 | Избегайте аббревиатур | `const startOfWeek = 'Sunday'` | `const sof = 'Sunday'` |
 | Избегайте бесмысленных имен | `const appInit = false` | `const foo = false` |
 | Избегайте названий переменных<br/> с нижним подчеркиваем | `const getUser = {}` |`const _getUser = {}` |
+| Избегайте цифр в названии переменных <br/> * Исключение в том случае если цифра <br/> входит в название сущности | `const book` <br/> `const olympusEM5` |`const book1` |
+| Функция должна выполнять что то одно <br/> и называться соответсвенно | `const fetchPosts` <br/> `const sortPosts`  |`const fetchAndSortPosts` |
+| Стараться придерживаться общепринятых названий для стандартных операций | `const trimPath` <br/> `const cutPath`  |`const truncatePath` |
+| Придерживаться единого соглашения для однообразных операций. <br/> Например для получения данных используется get, то во всех функциях получения данных стоит придерживаться этого нейминга | `const getProfile` <br/> `const getNews`  <br/> `const getPosts`  | `const fetchProfile` <br/> `const recieveNews`  <br/> `const getPosts`  |
+
 
 ### 🔥 Для компонент используем `PascalCase`, для всего остального `camelCase`
 | ⚡ Type   | ✅ Good   | ❌ Bad  |
@@ -32,6 +37,11 @@ import { FileTree} from "nextra/components";
 | :----- | :---- |
 | `const MAX_LENGTH = 100` | `const Max_length = 100`, `const max-length = 100`  и т.д. |
 
+### 🔥 Для `enum` используем `PascalCase`. Более подробно в разделе [Enums](enums)
+| ✅ Good   | ❌ Bad  |
+| :----- | :---- |
+| `enum Direction` | `enum DIRECTION`, `enum direction` |
+
 ### 🔥 Нейминг типов (type)
 * ❗ Т.к. пропсы мы не экпортируем предлагаю их называть `Props`
 * ❗ Не пишем в конце Type
@@ -42,7 +52,7 @@ import { FileTree} from "nextra/components";
 | типы, которые есть в проекте  | `User` | `UserType` |
 
 
-### 🔥 Разделяем через точку (test, storybook, test)
+### 🔥 Разделяем через точку `dot.case` (`type`, `storybook`, `test`)
 | ⚡ Type   | ✅ Good   | ❌ Bad  |
 | :-----  | :----- | :---- |
 | type  | `authApi.types.ts` | `authApiTypes.ts`, `authApi-types.ts` |
@@ -50,11 +60,7 @@ import { FileTree} from "nextra/components";
 | test | `authSlice.test.ts` | --- |
 
 
-
-
 ### 🔥 Структура проекта
-❗Создать тестовый публичный репозиторий в котором должен быть код (не обязательно рабочий)
-
 🔗 [Structure Files as Feature Folders with Single-File Logic](https://redux.js.org/style-guide/#structure-files-as-feature-folders-with-single-file-logic)
 
 🔗 [Redux toolkit query](https://redux-toolkit.js.org/rtk-query/usage/examples)
