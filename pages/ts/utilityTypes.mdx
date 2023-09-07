@@ -13,7 +13,7 @@ type UtilityType = Partial<UserType>
 ![](./images/partial.webp)
 
 ### ⚡2. Required
-``` ts showLineNumbers copy filename="partial.ts"
+``` ts showLineNumbers copy filename="required.ts"
 type UserType = {
     name?: string
     age?: number
@@ -26,7 +26,7 @@ type UtilityType = Required<UserType>
 
 
 ### ⚡3. Omit
-``` ts showLineNumbers copy filename="partial.ts"
+``` ts showLineNumbers copy filename="omit.ts"
 type UserType = {
     name: string
     age: number
@@ -39,7 +39,7 @@ type UtilityType = Omit<UserType, 'name' | 'isMarried'>
 
 
 ### ⚡4. Pick
-``` ts showLineNumbers copy filename="partial.ts"
+``` ts showLineNumbers copy filename="pick.ts"
 type UserType = {
     name: string
     age: number
@@ -52,7 +52,7 @@ type UtilityType = Omit<UserType, 'name' | 'isMarried'>
 
 
 ### ⚡5. Record
-``` ts showLineNumbers copy filename="partial.ts"
+``` ts showLineNumbers copy filename="record.ts"
 export type TasksStateType = {
   [key: string]: TaskType[]
 }
