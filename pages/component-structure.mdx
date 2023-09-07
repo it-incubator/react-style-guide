@@ -77,33 +77,33 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
     <Tab>
         ```tsx copy showLineNumbers filename="Login.tsx"
         const Login = () => {
-        const isLoggedIn = useSelector(selectIsLoggedIn);
+            const isLoggedIn = useSelector(selectIsLoggedIn);
 
-        const {formik} = useLogin();
+            const {formik} = useLogin();
 
-        if (isLoggedIn) {
-        return <Navigate to = {"/"} />;
-    }
+            if (isLoggedIn) {
+                return <Navigate to = {"/"} />;
+            }
 
-    return (
-    <div>JSX</div>
-    );
-    }
-    ```
+            return (
+                <div>JSX</div>
+            );
+        }
+        ```
 </Tab>
 <Tab>
     ```tsx copy showLineNumbers filename="useLogin.js"
     const useLogin = () => {
-    const {login} = useActions(authThunks);
+        const {login} = useActions(authThunks);
 
-    const formik = useFormik({
-    validate: (values) => {},
-    initialValues: {},
-    onSubmit: () => {},
-});
+        const formik = useFormik({
+            validate: (values) => {},
+            initialValues: {},
+            onSubmit: () => {},
+        });
 
-    return {formik};
-};
+        return {formik};
+    };
     ```
 </Tab>
 </Tabs>

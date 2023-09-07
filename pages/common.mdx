@@ -189,26 +189,26 @@ const User = () => {
     <Tab>
         ```tsx copy showLineNumbers filename="User.tsx"
         const User = () => {
-        return (
-        <div>
-        <Component1 text={"lorem ipsum"}/>
-    <Component2 count={"10"}/>
-</div>
-);
-};
-```
+            return (
+                <div>
+                    <Component1 text={"lorem ipsum"}/>
+                    <Component2 count={"10"}/>
+                </div>
+            );
+        };
+        ```
 </Tab>
 <Tab>
     ```tsx copy showLineNumbers filename="Component1.tsx"
     const Component1: FC<Props> = ({ text }) => {
-    return <div>{text}</div>;
+        return <div>{text}</div>;
     };
     ```
 </Tab>
 <Tab>
     ```tsx copy showLineNumbers filename="Component2.tsx"
     const Component2: FC<Props> = ({ text }) => {
-    return <div>Count: {count}</div>;
+        return <div>Count: {count}</div>;
     };
     ```
 </Tab>
