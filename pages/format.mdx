@@ -1,4 +1,221 @@
-## Общие правила
+import { Callout } from 'nextra/components'
+import {DownloadLink} from "../components/DownloadLink/DownloadLink";
 
-сюда добавить пошаговую настройку из документации субботу от Андрея Задорожного
-https://flashcards-docs.andrii.es/ru/lesson-1/chapter-1#%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%BB%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BE%D0%B2
+# Создание и настройка проекта (в разработке)
+
+## Pnpm
+
+```bash filename="Terminal"
+npm i -g pnpm
+```
+
+## Vite
+
+Мы будем использовать [Vite](https://vitejs.dev/) в качестве сборщика.
+
+```bash filename="Terminal"
+pnpm create vite
+```
+
+- Выберите название для проекта на ваш вкус
+- Фреймворк - React
+- Тип приложения - TypeScript
+
+<Callout type={'warning'}>
+    После создания проекта не забудьте установить зависимости, используя <code>pnpm i</code>
+</Callout>
+
+## Инициализация git
+
+В отличие от create-react-app, vite не инициализирует git репозиторий автоматически, поэтому нам нужно сделать это вручную:
+
+```bash filename="Terminal"
+git init
+```
+
+## Установка зависимостей
+
+### Linters
+
+Мы будем использовать линтеры от команды IT-Incubator:
+
+```bash filename="Terminal"
+pnpm i @it-incubator/eslint-config @it-incubator/prettier-config @it-incubator/stylelint-config stylelint -D
+```
+
+### SASS
+
+Мы будем использовать SASS в качестве препроцессора стилей:
+
+```bash filename="Terminal"
+pnpm i sass -D
+```
+
+## Конфигурация Alias'ов
+
+### Конфигурация Vite
+
+В файле vite.config.ts добавьте следующий код:
+
+```ts filename="vite.config.ts"
+import * as path from 'path'
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+  },
+})
+```
+
+Установим типы для nodejs что бы не было ошибок в vite.config.ts
+
+```bash filename="Terminal"
+pnpm i @types/node -D
+```
+
+### Конфигурация TypeScript
+
+```json filename="tsconfig.json"
+{
+  "compilerOptions": {
+    // ...rest of the template
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+```
+
+### Использование
+
+Теперь вы можете использовать алиасы везде в проекте:
+
+```tsx filename="App.tsx"
+import { App } from '@/App'
+```
+
+## Конфигурация линтеров
+
+### Prettier
+
+Создайте файл .prettierrc.cjs в корне проекта и скопируйте туда следующее содержимое:
+
+```js filename=".prettierrc.cjs"
+module.exports = {
+  ...require('@it-incubator/prettier-config'),
+  //override settings here
+}
+```
+### ESLint
+
+Замените содержимое файла .eslintrc.cjs на следующее:
+
+```js filename=".eslintrc.cjs"
+module.exports = {
+  extends: '@it-incubator/eslint-config',
+  rules: { 'no-console': ['warn', { allow: ['warn', 'error'] }] },
+}
+```
+
+### Stylelint
+
+Создайте файл .stylelintrc.cjs в корне проекта и скопируйте туда следующее содержимое:
+
+```js filename=".stylelintrc.cjs"
+module.exports = {
+  extends: '@it-incubator/stylelint-config',
+}
+```
+
+## Конфигурация WebStorm
+
+### Включить ESLint
+
+![](../public/eslint-settings.png)
+
+### Включить Prettier
+
+```bash
+{**/*,*}.{js,ts,jsx,tsx,vue,astro,cjs,mjs,css,scss}
+```
+
+![](../public/prettier-settings.png)
+
+### Включить stylelint
+
+![stylelint-settings.png](../public/stylelint-settings.png)
+
+### Включить автоматическое исправление ошибок при сохранении .css/.scss файлов
+
+//❗fix link
+<DownloadLink href="/watchers.xml" />
+
+
+После импорта получим следующее: ![](../public/file-watchers-settings.png)
+
+### Добавить скрипты в package.json, перезаписывая значения по умолчанию при необходимости
+
+```json lines filename="package.json"
+{
+  "scripts": {
+    "format": "prettier --write src",
+    "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input"
+  }
+}
+```
+
+### Убрать boilerplate
+
+- Удалить файл App.css
+- Удалить папку assets
+- Заменить содержимое файла App.tsx на следующее:
+
+```tsx filename="App.tsx"
+export function App() {
+  return <div>Hello</div>
+}
+```
+
+### Запустить линтеры
+
+- Prettier
+
+```bash
+pnpm run format
+```
+
+- Eslint и Stylelint
+
+```bash
+pnpm run lint
+```
+
+Некоторые ошибки eslint не исправляются автоматически, поэтому вам придется сделать это самостоятельно, например:
+![](../public/eslint-error-main.png)
+
+Постарайтесь разобраться сами, если не получится - замените содержимое файла main.tsx на следующее:
+
+```tsx filename="main.tsx"
+import './index.css'
+import { StrictMode } from 'react'
+
+import { createRoot } from 'react-dom/client'
+
+import { App } from './App.tsx'
+
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
+```
+
+<Callout type={'warning'}>
+    Наш eslint конфиг использует плагин import\/order, который требует, чтобы ваши файлы **css/scss
+    были размещены либо первыми, либо последними в импортах** (см. пример выше), иначе вы получите
+    неразрешимые ошибки.
+</Callout>
