@@ -3,7 +3,7 @@
   "format": "Prettier, eslint, stylelint",
   "naming": "Нейминг",
   "common": "Общие правила",
-  "component-structure": "Структура компонента",
+  "react": "React правила",
   "ts": "Typescript",
   "comments": "Комментарии",
   "export": "Export default",

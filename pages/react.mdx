@@ -1,8 +1,14 @@
 import {Callout, Tabs, Tab} from 'nextra/components'
 
-## Структура компонента
+# React правила
 
-#### ⚡ Чтобы все файлы компонентов были согласованы, следуйте следующей схеме:
+## 🔥Декомпозиция
+* Давайте условимся что компоненты не должны больше 300 строк кода. Лучше конечно меньше.
+* Лучше передробить чем недодрабить
+
+
+## 🔥Структура компонента
+Чтобы все файлы компонентов были согласованы, следуйте следующей схеме:
 ```tsx showLineNumbers
 // 1. Imports
 import { FC, useEffect, useState } from "react";
@@ -56,7 +62,7 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
   );
 };
 ```
-### 🔥 [Кастомный хук](https://react.dev/learn/reusing-logic-with-custom-hooks)
+## 🔥[Кастомный хук](https://react.dev/learn/reusing-logic-with-custom-hooks)
 ❗ Если логики в компоненте больше 20 строк выносим логику в кастомный хук
 
 <Callout type={"info"}>
@@ -103,6 +109,127 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
         });
 
         return {formik};
+    };
+    ```
+</Tab>
+</Tabs>
+
+
+## 🔥[Fragment](https://react.dev/reference/react/Fragment)
+Если, компонент на верхнем уровне не требует стилизации, то для того, чтобы не создавать лишнюю обертку используем Fragment (<>...</>)
+```tsx copy showLineNumbers {4,7,14,17}
+// ❌
+const ButtonList1 = () => {
+  return (
+    <div>
+      <button>add</button>
+      <button>remove</button>
+    </div>
+  );
+};
+
+// ✅
+const ButtonList2 = () => {
+  return (
+	<>
+	  <button>add</button>
+	  <button>remove</button>
+	</>
+  );
+};
+```
+
+
+## 🔥Деструктуризация пропсов
+Деструктурируем пропсы, чтобы писать меньше кода в разметке
+
+```tsx copy showLineNumbers
+// ❌
+const Button1 = (props) => {
+	return <button>{props.text}</button>;
+};
+
+// ✅
+const Button2 = ({text}) => {
+	return <button>{text}</button>;
+};
+```
+
+## 🔥Дробим логические выражения
+Если логическое выражение составное, то дробим его
+``` tsx showLineNumbers
+// ❌
+return (
+    <>
+        {(requiredAnswers && !!avatar && !isReminderOpen) || isHelp2Debug && <NavBar>}
+    </>
+)
+
+// ✅
+const navbarEnabled = (requiredAnswers && !!avatar && !isReminderOpen) || isHelp2Debug
+
+return (
+    <>
+        { navbarEnabled && <NavBar>}
+    </>
+)
+```
+
+## 🔥Оптимизация приложения
+❌ Прописать про избыточную оптимизацию (useMemo, useCallback и пр.)
+
+[Передозировка useMemo](https://edvins.io/usememo-overdose)
+
+## 🔥Включайте только один React компонент в файл.
+
+```tsx copy showLineNumbers filename="User.tsx"
+// ❌ Пример плохого использования. В одном файле 3 компонента
+
+//1️⃣
+const Component1: FC<Props> = ({ text }) => {
+  return <div>{text}</div>;
+};
+
+// 2️⃣
+const Component2: FC<Props> = ({ count }) => {
+  return <div>Count: {count}</div>;
+};
+
+// 3️⃣
+const User = () => {
+  return (
+    <div>
+      <Component1 text={"lorem ipsum"}/>
+      <Component2 count={"10"}/>
+    </div>
+  );
+};
+```
+
+<Tabs items={['User.tsx', 'Component1.tsx', 'Component2.tsx']}>
+    <Tab>
+        ```tsx copy showLineNumbers filename="User.tsx"
+        const User = () => {
+        return (
+        <div>
+        <Component1 text={"lorem ipsum"}/>
+    <Component2 count={"10"}/>
+</div>
+);
+};
+```
+</Tab>
+<Tab>
+    ```tsx copy showLineNumbers filename="Component1.tsx"
+    const Component1: FC<Props> = ({ text }) => {
+    return <div>{text}</div>;
+    };
+    ```
+</Tab>
+<Tab>
+    ```tsx copy showLineNumbers filename="Component2.tsx"
+    const Component2: FC<Props> = ({ text }) => {
+    return <div>Count: {count}</div>;
     };
     ```
 </Tab>
