@@ -52,7 +52,7 @@ type UserType = {
     isMarried: boolean
 }
 
-type UtilityType = Omit<UserType, 'name' | 'isMarried'>
+type UtilityType = Pick<UserType, 'name' | 'age'>
 ```
 ![](./images/pick.webp)
 
