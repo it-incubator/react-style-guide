@@ -7,9 +7,6 @@
   "ts": "Typescript",
   "comments": "Комментарии",
   "export": "Export default",
-  "built-in": {
-    "display": "hidden"
-  },
   "links": {
     "display": "hidden"
   }
