@@ -1,5 +1,5 @@
 import { Callout } from 'nextra/components'
-import {DownloadLink} from "../components/DownloadLink/DownloadLink";
+import { DownloadLink } from '../components/DownloadLink/DownloadLink'
 
 # Создание и настройка проекта
 
@@ -80,6 +80,7 @@ module.exports = {
   //override settings here
 }
 ```
+
 ### ESLint
 
 Замените содержимое файла .eslintrc.cjs на следующее:
@@ -122,8 +123,8 @@ module.exports = {
 ### Включить автоматическое исправление ошибок при сохранении .css/.scss файлов
 
 //❗fix link
-<DownloadLink href="/watchers.xml" />
 
+<DownloadLink href="/watchers.xml" />
 
 После импорта получим следующее: ![](../public/file-watchers-settings.png)
 
@@ -185,7 +186,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
 ```
 
 <Callout type={'warning'}>
-    Наш eslint конфиг использует плагин import\/order, который требует, чтобы ваши файлы **css/scss
-    были размещены либо первыми, либо последними в импортах** (см. пример выше), иначе вы получите
-    неразрешимые ошибки.
+  Наш eslint конфиг использует плагин import\/order, который требует, чтобы ваши файлы **css/scss
+  были размещены либо первыми, либо последними в импортах** (см. пример выше), иначе вы получите
+  неразрешимые ошибки.
 </Callout>

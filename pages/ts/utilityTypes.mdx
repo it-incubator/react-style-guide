@@ -1,79 +1,83 @@
-import {Callout} from "nextra/components";
+import { Callout } from 'nextra/components'
 
 # Utility Types
 
 <Callout type={'info'} emoji={'🔗'}>
-    [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+  [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 </Callout>
 
 ### ⚡1. Partial
-``` ts showLineNumbers copy filename="partial.ts"
+
+```ts showLineNumbers filename="partial.ts"
 type UserType = {
-    name: string
-    age: number
-    isMarried: boolean
+  name: string
+  age: number
+  isMarried: boolean
 }
 
 type UtilityType = Partial<UserType>
 ```
+
 ![](./images/partial.webp)
 
 ### ⚡2. Required
-``` ts showLineNumbers copy filename="required.ts"
+
+```ts showLineNumbers filename="required.ts"
 type UserType = {
-    name?: string
-    age?: number
-    isMarried?: boolean
+  name?: string
+  age?: number
+  isMarried?: boolean
 }
 
 type UtilityType = Required<UserType>
 ```
+
 ![](./images/required.webp)
 
-
 ### ⚡3. Omit
-``` ts showLineNumbers copy filename="omit.ts"
+
+```ts showLineNumbers filename="omit.ts"
 type UserType = {
-    name: string
-    age: number
-    isMarried: boolean
+  name: string
+  age: number
+  isMarried: boolean
 }
 
 type UtilityType = Omit<UserType, 'name' | 'isMarried'>
 ```
+
 ![](./images/omit.webp)
 
-
 ### ⚡4. Pick
-``` ts showLineNumbers copy filename="pick.ts"
+
+```ts showLineNumbers filename="pick.ts"
 type UserType = {
-    name: string
-    age: number
-    isMarried: boolean
+  name: string
+  age: number
+  isMarried: boolean
 }
 
 type UtilityType = Pick<UserType, 'name' | 'age'>
 ```
+
 ![](./images/pick.webp)
 
-
 ### ⚡5. Record
-``` ts showLineNumbers copy filename="record.ts"
+
+```ts showLineNumbers filename="record.ts"
 export type TasksStateType = {
   [key: string]: TaskType[]
 }
 
 export type TasksStateType2 = Record<string, TaskType[]>
 
-
 // Как типизировать объект в котором свойства и значения могут быть любые ?
 
 const Object = {
-  a1: "a1",
+  a1: 'a1',
   b2: 2,
   c9: true,
 }
 
 type ObjectType = Record<string, unknown>
 ```
-
