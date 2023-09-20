@@ -3,4 +3,7 @@ export default {
   project: {
     link: 'https://github.com/safronman/react-style-guide',
   },
+  sidebar: {
+    toggleButton: true,
+  },
 }
