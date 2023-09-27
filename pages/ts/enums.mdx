@@ -1,12 +1,12 @@
 import {Callout} from 'nextra/components'
 
-# Enums
+# 6.2.Enums
 
 <Callout type={'info'} emoji={'🔗'}>
     [Ts documentation](https://www.typescriptlang.org/docs/handbook/enums.html)
 </Callout>
 
-### ⚡1. Примеры нейминга
+## 6.2.1. Примеры нейминга
 
 ```ts showLineNumbers
 // ✅ Numeric enums
@@ -26,7 +26,7 @@ enum Direction {
 }
 ```
 
-### ⚡2. Не используйте const enum
+## 6.2.2. Не используйте `const enum`
 
 <Callout type={'info'} emoji={'🔗'}>
     * [Google Style Guide](https://google.github.io/styleguide/tsguide.html#enums)
@@ -56,14 +56,14 @@ const enum Direction {
     обеспечит совместимость с другими модулями JavaScript и упростит отладку и поддержку вашего кода.
 </Callout>
 
-### ⚡3. Objects vs Enums
+## 6.2.3. Objects vs Enums
 
 <Callout type={'info'} emoji={'🔗'}>
     * [Objects vs Enums](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums)
     * [📺 Video Matt Pocock](https://youtu.be/jjMbPt_H3RQ?si=RBml79gtgGOx3K4f)
 </Callout>
 
-##### 1 пример. String enums используем в качестве типа
+#### 1 пример. `String enums` используем в качестве типа
 
 ```ts showLineNumbers
 enum DirectionStr {
@@ -81,7 +81,7 @@ foo(DirectionStr.Up) // ✅ Так все хорошо отработает
 foo('UP') // ❌ А вот так нет 🤔
 ```
 
-##### 2 пример. Number enums используем в качестве типа
+#### 2 пример. `Number enums` используем в качестве типа
 
 ```ts showLineNumbers
 enum Direction {
@@ -100,7 +100,7 @@ foo(1) // ✅ И так все хорошо отработает
 foo(10) // ✅ И даже так все хорошо отработает 🤔🤯😱
 ```
 
-##### 3 пример. Используем `as const` (String enums)
+#### 3 пример. Используем `as const` (`String enums`)
 
 ```ts showLineNumbers
 const direction = {
@@ -122,7 +122,7 @@ foo('UP') // ✅ И так все хорошо отработает 👍
 foo('UP2') // ❌ А вот так будет ошибка 👍
 ```
 
-##### 4 пример. Используем `as const` (Number enums)
+#### 4 пример. Используем `as const` (`Number enums`)
 
 ```ts showLineNumbers
 const direction = {
@@ -147,5 +147,5 @@ foo(10) // ❌ А вот так будет ошибка 👍
     Выводы:
     * Enum - одна из немногих возможностей TypeScript, которая не является расширением
     JavaScript на уровне типов.
-    * Enum - хуже работает в качестве типов
+    * Enum - не очевидно работает в качестве типов
 </Callout>

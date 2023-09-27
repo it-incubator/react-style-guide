@@ -1,12 +1,12 @@
 import { Callout } from 'nextra/components'
 
-# Utility Types
+# 6.3. Utility Types
 
 <Callout type={'info'} emoji={'🔗'}>
   [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 </Callout>
 
-### ⚡1. Partial
+## 6.3.1. Partial
 
 ```ts showLineNumbers filename="partial.ts"
 type UserType = {
@@ -20,7 +20,7 @@ type UtilityType = Partial<UserType>
 
 ![](./images/partial.webp)
 
-### ⚡2. Required
+## 6.3.2. Required
 
 ```ts showLineNumbers filename="required.ts"
 type UserType = {
@@ -34,7 +34,7 @@ type UtilityType = Required<UserType>
 
 ![](./images/required.webp)
 
-### ⚡3. Omit
+## 6.3.3. Omit
 
 ```ts showLineNumbers filename="omit.ts"
 type UserType = {
@@ -48,7 +48,7 @@ type UtilityType = Omit<UserType, 'name' | 'isMarried'>
 
 ![](./images/omit.webp)
 
-### ⚡4. Pick
+## 6.3.4. Pick
 
 ```ts showLineNumbers filename="pick.ts"
 type UserType = {
@@ -62,7 +62,7 @@ type UtilityType = Pick<UserType, 'name' | 'age'>
 
 ![](./images/pick.webp)
 
-### ⚡5. Record
+## 6.3.5. Record
 
 ```ts showLineNumbers filename="record.ts"
 export type TasksStateType = {
