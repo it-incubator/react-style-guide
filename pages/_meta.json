@@ -1,13 +1,10 @@
 {
-  "index": "Главная страница",
-  "format": "Prettier, eslint, stylelint",
-  "naming": "Нейминг",
-  "common": "Общие правила",
-  "react": "React правила",
-  "ts": "Typescript",
-  "comments": "Комментарии",
-  "export": "Export default",
-  "links": {
-    "display": "hidden"
-  }
+  "index": "1. Главная страница",
+  "format": "2. Prettier, eslint, stylelint",
+  "naming": "3. Нейминг",
+  "common": "4. Общие правила",
+  "react": "5. React правила",
+  "ts": "6. Typescript",
+  "comments": "7. Комментарии",
+  "export": "8. Export default"
 }
