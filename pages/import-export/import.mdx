@@ -1,0 +1,49 @@
+import { FileTree, Tabs, Tab } from 'nextra/components'
+
+# Import
+
+## Imports CRA
+
+- В React (CRA) используем абсолютные пути
+
+```json showLineNumbers filename="tsconfig.json" {4}
+{
+  "compilerOptions": {
+    "target": "es5",
+    "baseUrl": "src"
+}
+```
+
+## Imports Next.js
+
+- В Next.js используем alias
+
+## Re-export from index.ts
+
+⚡ Используем re-export при помощи `index.ts`
+
+<Tabs items={['useDebounce.ts', 'useLocalStorage.ts', 'index.ts']} defaultIndex="2">
+  <Tab>
+    ```tsx
+    export const useDebounce = () => {}
+    ```
+  </Tab>
+  <Tab>
+    ```tsx
+    export const useLocalStorage = () => {}
+    ```
+  </Tab>
+  <Tab>
+    ```tsx
+    export {useDebounce} from "./useDebounce"
+    export {useLocalStorage} from "./useLocalStorage"
+    ```
+  </Tab>
+</Tabs>
+
+<FileTree.Folder name="hooks" defaultOpen>
+  <FileTree.File name="useDebounce.ts" />
+  <FileTree.File name="useLocalStorage.ts" />
+  <FileTree.File name="index.ts" />
+</FileTree.Folder>
+
