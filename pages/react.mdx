@@ -13,7 +13,7 @@ import { Callout, Tabs, Tab } from 'nextra/components'
 
 ```tsx showLineNumbers
 // 1. Imports
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // 2. Types
 type Props = {
@@ -27,7 +27,7 @@ type Props = {
 const SOME_CONSTANT = 'something'
 
 // 4. Деструктуризация пропсов
-export const Todolist: FC<Props> = ({ todolist, tasks }) => {
+export const Todolist = ({ todolist, tasks }: Props) => {
   // ❗ Данную логику лучше выносить в кастомный хук
   // 4.1. Объявление переменных
   // 4.2. Разделяем логически связанные части
@@ -65,7 +65,70 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
 }
 ```
 
-## 5.3. [Кастомный хук](https://react.dev/learn/reusing-logic-with-custom-hooks)
+## 5.3. Типизация пропсов
+<Callout type={'error'} emoji={'❗'}>
+  Для типизация Props не используем React.FC
+</Callout>
+
+
+```tsx showLineNumbers filename="❌ Пример с ипользованием React.FC" {1, 7}
+import { FC } from 'react'
+
+type Props = {
+  message: string
+}
+
+const Component: FC<Props> = ({ message }) => {
+  return <>TSX</>
+}
+```
+
+```tsx showLineNumbers filename="✅ Пример без ипользования React.FC" {5}
+type Props = {
+  message: string
+}
+
+const Component = ({ message }: Props) => {
+   return <>TSX</>
+}
+```
+
+### 5.3.1. Теория
+Что `React.FC` добавляет в функциональный компонент ?
+* явно указывает возвращаемое значение (`ReactNode`)
+* добавляет типы для статический свойств (`displayName`, `propsTypes`, `defaultProps`)
+
+```tsx
+type FC<P = {}> = FunctionComponent<P>
+
+interface FunctionComponent<P = {}> {
+    (props: P, context?: any): ReactNode;
+    propTypes?: WeakValidationMap<P> | undefined;
+    contextTypes?: ValidationMap<any> | undefined;
+    defaultProps?: Partial<P> | undefined;
+    displayName?: string | undefined;
+}
+```
+
+### 5.3.2. Минусы
+* Лишний импорт (`import { FC } from 'react'`)
+* Приходится писать дополнительный дженерик, дополнительная “сущность” в коде
+* В современных руководствах от него отказались (пруфы ниже)
+
+### 5.3.3. Плюсы
+* `React.FC` типизирует возвращаемое значение как `ReactNode` (поможет, если вы захотите вернуть из компонента объект)
+* Явно показывает, что функция является React component
+
+### 5.3.4. Статьи на данную тему:
+<Callout type={'info'} emoji={'🔗'}>
+  * [Why is React.FC not needed (справочнике React TypeScript Cheatsheet)](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/function_components)
+  * [Документация React](https://react.dev/learn/typescript#typescript-with-react-components)
+  * [You can stop hating React.FC (Matt Pocock)](https://www.totaltypescript.com/you-can-stop-hating-react-fc)
+</Callout>
+
+
+
+## 5.4. [Кастомный хук](https://react.dev/learn/reusing-logic-with-custom-hooks)
 
 ❗ Если логики в компоненте больше 20 строк выносим логику в кастомный хук
 
@@ -81,7 +144,6 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
     чистым и понятным.
     * Упрощение компонентов. Используя кастомный хук, вы можете вынести сложную логику из компонента, делая его более
     простым и легко поддерживаемым.
-
 </Callout>
 
 <Tabs items={['Login.tsx', 'useLogin.ts']}>
@@ -121,7 +183,7 @@ export const Todolist: FC<Props> = ({ todolist, tasks }) => {
 </Tab>
 </Tabs>
 
-## 5.4. [Fragment](https://react.dev/reference/react/Fragment)
+## 5.5. [Fragment](https://react.dev/reference/react/Fragment)
 
 Если, компонент на верхнем уровне не требует стилизации, то для того, чтобы не создавать лишнюю обертку используем Fragment (<>...</>)
 
@@ -147,7 +209,7 @@ const ButtonList2 = () => {
 }
 ```
 
-## 5.5. Деструктуризация пропсов
+## 5.6. Деструктуризация пропсов
 
 Деструктурируем пропсы, чтобы писать меньше кода в разметке
 
@@ -163,7 +225,7 @@ const Button2 = ({ text }) => {
 }
 ```
 
-## 5.6. Дробим логические выражения
+## 5.7. Дробим логические выражения
 
 Если логическое выражение составное, то дробим его
 
@@ -185,24 +247,24 @@ return (
 )
 ```
 
-## 5.7. Оптимизация приложения
+## 5.8. Оптимизация приложения
 
 ❌ Избыточная оптимизацию (useMemo, useCallback и пр.). В разработке
 
 [Передозировка useMemo](https://edvins.io/usememo-overdose)
 
-## 5.8. Включайте только один React компонент в файл.
+## 5.9. Включайте только один React компонент в файл.
 
 ```tsx showLineNumbers filename="User.tsx"
 // ❌ Пример плохого использования. В одном файле 3 компонента
 
 //1️⃣
-const Component1: FC<Props> = ({ text }) => {
+const Component1 = ({ text }: Props) => {
   return <div>{text}</div>
 }
 
 // 2️⃣
-const Component2: FC<Props> = ({ count }) => {
+const Component2 = ({ count }: Props) => {
   return <div>Count: {count}</div>
 }
 
@@ -221,27 +283,27 @@ const User = () => {
     <Tab>
         ```tsx showLineNumbers filename="User.tsx"
         const User = () => {
-        return (
-        <div>
-        <Component1 text={"lorem ipsum"}/>
-    <Component2 count={"10"}/>
-</div>
-);
-};
-```
-</Tab>
-<Tab>
+          return (
+            <div>
+              <Component1 text={"lorem ipsum"}/>
+              <Component2 count={"10"}/>
+            </div>
+          );
+        };
+        ```
+  </Tab>
+  <Tab>
     ```tsx showLineNumbers filename="Component1.tsx"
-    const Component1: FC<Props> = ({ text }) => {
-    return <div>{text}</div>;
-    };
+      const Component1 = ({ text }: Props) => {
+        return <div>{text}</div>;
+      };
     ```
-</Tab>
-<Tab>
+  </Tab>
+  <Tab>
     ```tsx copy showLineNumbers filename="Component2.tsx"
-    const Component2: FC<Props> = ({ text }) => {
-    return <div>Count: {count}</div>;
-    };
+      const Component2 = ({ text }: Props) => {
+        return <div>Count: {count}</div>;
+      };
     ```
-</Tab>
+  </Tab>
 </Tabs>
