@@ -7,45 +7,54 @@ import { Callout } from 'nextra/components'
 </Callout>
 
 ## 8.1. Требования к именам коммитов
-- Названия коммитов должны быть согласно [гайдлайну](https://www.conventionalcommits.org/ru/v1.0.0/)
-- Тип коммита должен быть только в нижнием регистре (`feat`, `fix`, `refactor`, `docs` и т.д.)
-- Должен использоваться present tense ("add feature" not "added feature")
-- Должен использоваться imperative mood ("move cursor to..." not "moves cursor to...")
+* Названия коммитов должны быть согласно [гайдлайну](https://www.conventionalcommits.org/ru/v1.0.0/)
+* Для того чтобы удобно было контролировать таски в [Jira](https://www.atlassian.com/software/jira) делаем следующее. В начале коммита добавляем имя таски
+`ST-1057`, `TM-15`, `IT-535` (буквы - сокращенное имя проекта, цифры - порядковый номер задачи)
+
+![](../public/jira-task.png)
+* Тип коммита должен быть только в нижнием регистре (`feat`, `fix`, `refactor`, `docs` и т.д.)
+* Должен использоваться present tense ("add feature" not "added feature")
+* Должен использоваться imperative mood ("move cursor to..." not "moves cursor to...")
+
+```bash filename="✅ Пример правильного сообщения о коммите"
+ST-1057 feat: add banner
+```
 
 ### 8.1.1. Примеры имен коммитов
 - `init:` - используется для начала проекта/таска. Примеры:
-```
-init: start youtube-task
-init: start mentor-dashboard task
+
+``` bash filename="init commit message"
+ST-1057 init: start youtube-task
+ST-1057 init: start mentor-dashboard task
 ```
 - `feat:` - это реализованная новая функциональность из технического задания (добавил поддержку зумирования, добавил footer, добавил карточку продукта). Примеры:
-```
-feat: add basic page layout
-feat: implement search box
-feat: implement request to youtube API
-feat: implement swipe for horizontal list
-feat: add additional navigation button
-feat: add banner
-feat: add social links
-feat: add physical security section
-feat: add real social icons
+``` bash filename="feat commit message"
+ST-1057 feat: add basic page layout
+ST-1057 feat: implement search box
+ST-1057 feat: implement request to youtube API
+ST-1057 feat: implement swipe for horizontal list
+ST-1057 feat: add additional navigation button
+ST-1057 feat: add banner
+ST-1057 feat: add social links
+ST-1057 feat: add physical security section
+ST-1057 feat: add real social icons
 ```
 - `fix:` - исправил ошибку в ранее реализованной функциональности. Примеры:
-```
-fix: implement correct loading data from youtube
-fix: change layout for video items to fix bugs
-fix: relayout header for firefox
-fix: adjust social links for mobile
+``` bash filename="fix commit message"
+ST-1057 fix: implement correct loading data from youtube
+ST-1057 fix: change layout for video items to fix bugs
+ST-1057 fix: relayout header for firefox
+ST-1057 fix: adjust social links for mobile
 ```
 - `refactor:` - новой функциональности не добавлял / поведения не менял. Файлы в другие места положил, удалил, добавил. Изменил форматирование кода (white-space, formatting, missing semi-colons, etc). Улучшил алгоритм, без изменения функциональности. Примеры:
-```
-refactor: change structure of the project
-refactor: rename vars for better readability
-refactor: apply eslint
-refactor: apply prettier
+``` bash filename="refactor commit message"
+ST-1057 refactor: change structure of the project
+ST-1057 refactor: rename vars for better readability
+ST-1057 refactor: apply eslint
+ST-1057 refactor: apply prettier
 ```
 - `docs:` - используется при работе с документацией/readme проекта. Примеры:
-```
-docs: update readme with additional information
-docs: update description of run() method
+``` bash filename="docs commit message"
+ST-1057 docs: update readme with additional information
+ST-1057 docs: update description of run() method
 ```
