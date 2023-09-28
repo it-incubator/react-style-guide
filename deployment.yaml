@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: DEPLOYMENT_NAME
+  namespace: NAMESPACE
+  labels:
+    app: PROJECT
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      project: PROJECT
+  template:
+    metadata:
+      namespace: NAMESPACE
+      labels:
+        project: PROJECT
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-reg
+      containers:
+        - name: PROJECT
+          image: REGISTRY_HOSTNAME/PROJECT:TAG_VERSION
+          resources:
+            requests:
+              memory: "300Mi"
+            limits:
+              memory: "600Mi"
+          ports:
+            - containerPort: PORT_CONTAINER
