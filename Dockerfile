@@ -1,7 +1,7 @@
 FROM node:18.17.1 as dependencies
 WORKDIR /react-style-guide
 COPY package.json ./
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 FROM node:18.17.1 as builder
 WORKDIR /react-style-guide
