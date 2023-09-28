@@ -1,4 +1,5 @@
 {
+  "name": "react-style-guide",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
