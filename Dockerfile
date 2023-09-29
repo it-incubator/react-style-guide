@@ -20,4 +20,5 @@ COPY --from=builder /react-style-guide/node_modules ./node_modules
 COPY --from=builder /react-style-guide/package.json ./package.json
 
 EXPOSE 3000
+
 CMD ["yarn", "start"]
