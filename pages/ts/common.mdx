@@ -92,7 +92,7 @@ type Status = 'success' | 'failed'
 
 const func2 = (status: Status2 | null) => {}
 
-// ✅✅ Best. Используем кастомный NullbleType
+// ✅✅ Best. Используем кастомный Nullable type
 export type Nullable<T> = T | null
 
 type Status = 'success' | 'failed'
@@ -100,6 +100,48 @@ type Status = 'success' | 'failed'
 const func3 = (status: Nullable<Status>) => {}
 ```
 
-## 6.1.6. Wrapper types (`String`, `Boolean`, `Number`)
+## 6.1.6. [Prettify type aliase](https://www.totaltypescript.com/concepts/the-prettify-helper)
+
+<Callout type={'info'}>
+    В intersected типах желательно использование кастомного типа Prettify.
+</Callout>
+
+⚡ Это упрощает чтение, т. к. не будет вложенных типов с неочевидными значениями, для уточнения которых требуется переходить к типу.
+
+```ts
+// ❌ Bad
+type User = {
+  name: string
+  age: number
+}
+
+type Student = User & {
+  isGraduate: boolean
+}
+
+```
+![](./images/notPrettified.webp)
+
+```ts showLineNumbers filename="prettify.ts"
+// ✅ Good for prettifying and easier reading intersected types
+export type Prettify<T> = {
+    [K in keyof T]: T[K]
+}
+
+type User = {
+  name: string
+  age: number
+}
+
+type Student = User & {
+  isGraduate: boolean
+}
+
+type PrettifiedStudent = Prettify<Student>
+
+```
+![](./images/prettify.webp)
+
+## 6.1.7. Wrapper types (`String`, `Boolean`, `Number`)
 
 ❗ Для примитивов никогда не используем [wrapper types](https://google.github.io/styleguide/tsguide.html#wrapper-types)

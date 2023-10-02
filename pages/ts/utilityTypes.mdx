@@ -9,13 +9,13 @@ import { Callout } from 'nextra/components'
 ## 6.3.1. Partial
 
 ```ts showLineNumbers filename="partial.ts"
-type UserType = {
+type User = {
   name: string
   age: number
   isMarried: boolean
 }
 
-type UtilityType = Partial<UserType>
+type Utility = Partial<User>
 ```
 
 ![](./images/partial.webp)
@@ -23,13 +23,13 @@ type UtilityType = Partial<UserType>
 ## 6.3.2. Required
 
 ```ts showLineNumbers filename="required.ts"
-type UserType = {
+type User = {
   name?: string
   age?: number
   isMarried?: boolean
 }
 
-type UtilityType = Required<UserType>
+type Utility = Required<User>
 ```
 
 ![](./images/required.webp)
@@ -37,13 +37,13 @@ type UtilityType = Required<UserType>
 ## 6.3.3. Omit
 
 ```ts showLineNumbers filename="omit.ts"
-type UserType = {
+type User = {
   name: string
   age: number
   isMarried: boolean
 }
 
-type UtilityType = Omit<UserType, 'name' | 'isMarried'>
+type Utility = Omit<User, 'name' | 'isMarried'>
 ```
 
 ![](./images/omit.webp)
@@ -51,13 +51,13 @@ type UtilityType = Omit<UserType, 'name' | 'isMarried'>
 ## 6.3.4. Pick
 
 ```ts showLineNumbers filename="pick.ts"
-type UserType = {
+type User = {
   name: string
   age: number
   isMarried: boolean
 }
 
-type UtilityType = Pick<UserType, 'name' | 'age'>
+type Utility = Pick<User, 'name' | 'age'>
 ```
 
 ![](./images/pick.webp)
@@ -65,11 +65,11 @@ type UtilityType = Pick<UserType, 'name' | 'age'>
 ## 6.3.5. Record
 
 ```ts showLineNumbers filename="record.ts"
-export type TasksStateType = {
-  [key: string]: TaskType[]
+export type TasksState = {
+  [key: string]: Task[]
 }
 
-export type TasksStateType2 = Record<string, TaskType[]>
+export type TasksState2 = Record<string, Task[]>
 
 // Как типизировать объект в котором свойства и значения могут быть любые ?
 
@@ -79,5 +79,5 @@ const Object = {
   c9: true,
 }
 
-type ObjectType = Record<string, unknown>
+type Object = Record<string, unknown>
 ```
