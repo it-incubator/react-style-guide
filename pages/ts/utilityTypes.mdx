@@ -7,6 +7,10 @@ import { Callout } from 'nextra/components'
 </Callout>
 
 ## 6.3.1. Partial
+<Callout>
+  `Partial` используется для создания нового типа данных на основе существующего типа, **делая все его свойства
+  необязательными**
+</Callout>
 
 ```ts showLineNumbers filename="partial.ts"
 type User = {
@@ -21,6 +25,10 @@ type Utility = Partial<User>
 ![](./images/partial.png)
 
 ## 6.3.2. Required
+<Callout>
+  `Required` используется для создания нового типа данных на основе существующего типа, **делая все его свойства
+  обязательными**
+</Callout>
 
 ```ts showLineNumbers filename="required.ts"
 type User = {
@@ -36,6 +44,11 @@ type Utility = Required<User>
 
 ## 6.3.3. Omit
 
+<Callout>
+  `Omit` используется для создания нового типа данных на основе существующего типа, **исключая определенные свойства
+  из исходного типа**
+</Callout>
+
 ```ts showLineNumbers filename="omit.ts"
 type User = {
   name: string
@@ -49,6 +62,11 @@ type Utility = Omit<User, 'name' | 'isMarried'>
 ![](./images/omit.png)
 
 ## 6.3.4. Pick
+
+<Callout>
+  `Pick` используется для создания нового типа данных на основе существующего типа, **выбирая определенные свойства из
+  исходного типа**
+</Callout>
 
 ```ts showLineNumbers filename="pick.ts"
 type User = {
@@ -64,12 +82,32 @@ type Utility = Pick<User, 'name' | 'age'>
 
 ## 6.3.5. Record
 
+<Callout>
+  `Record` используется для создания нового типа данных, представляющего объект, где ключи (свойства) имеют определенный
+  тип данных и ассоциированы с другим типом данных.
+  * Это полезно, когда вам нужно создать тип, который описывает
+  структуру объекта с определенными ключами и типами значений.
+</Callout>
+
+
+1. Синтаксис Record выглядит следующим образом
+
 ```ts showLineNumbers filename="record.ts"
-export type TasksState = {
+type MyRecord = Record<Keys, Values>;
+
+- Keys - это тип для ключей (свойств) объекта.
+- Values - это тип для значений, соответствующих ключам.
+```
+
+2. Примеры использования Record
+```ts showLineNumbers filename="record.ts"
+// ❌
+type TasksState = {
   [key: string]: Task[]
 }
 
-export type TasksState2 = Record<string, Task[]>
+// ✅
+type TasksState2 = Record<string, Task[]>
 
 // Как типизировать объект в котором свойства и значения могут быть любые ?
 
