@@ -1,5 +1,6 @@
 import { Callout } from 'nextra/components'
 import { DownloadLink } from '../components/DownloadLink/DownloadLink'
+import Link from 'next/link'
 
 # 2. Создание и настройка проекта
 
@@ -122,9 +123,11 @@ module.exports = {
 
 ### Включить автоматическое исправление ошибок при сохранении .css/.scss файлов
 
-//❗fix link
+<DownloadLink href="https://drive.google.com/file/d/1oaMa1VHfL_xAsObTUYea1Vtp-w9SHLg_/view?usp=sharing"
+              title={'Скачайте файл watchers.xml'}
+              description={' и импортируйте его в Settings | Tools | File Watchers'}
+/>
 
-<DownloadLink href="/watchers.xml" />
 
 После импорта получим следующее: ![](../public/file-watchers-settings.png)
 
