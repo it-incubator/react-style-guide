@@ -38,7 +38,8 @@ export const Todolist = ({ todolist, tasks }: Props) => {
 
   const { token } = useParams<{ token?: string }>()
 
-  // 4.3. Effects
+  // 4.3. Effects (нету строгого правила)
+  // * useEffect можно перенести вниз (перед TSX)
   useEffect(() => {
     fetchTasks(todolist.id)
   }, [])
