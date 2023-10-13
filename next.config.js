@@ -6,5 +6,5 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   swcMinify: true,
-  baseURL: "/react"
+  basePath: '/react',
 })
