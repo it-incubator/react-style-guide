@@ -6,5 +6,5 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   swcMinify: true,
-  basePath: '/react',
+  basePath: process.env.NODE_ENV === 'development' ? '' : '/react',
 })
