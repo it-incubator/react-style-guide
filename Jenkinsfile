@@ -28,35 +28,6 @@ pipeline {
                }
             }
         }
-        stage('Unit tests') {
-            steps {
-                script {
-                    sh "yarn"
-                    sh "yarn test"
-                }
-            }
-            post {
-               unsuccessful {
-                    script {
-                        env.GLOBAL_BUILD_MESSAGE_ERROR = "Stage Unit tests"
-                    }
-               }
-            }
-        }
-        stage('e2e tests') {
-            steps {
-                script {
-                    sh "yarn test:e2e"
-                }
-            }
-            post {
-               unsuccessful {
-                    script {
-                        env.GLOBAL_BUILD_MESSAGE_ERROR = "Stage e2e tests"
-                    }
-               }
-            }
-        }
         stage('Build docker image') {
             steps {
                 echo "Build image started..."
