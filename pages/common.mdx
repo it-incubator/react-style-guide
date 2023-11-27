@@ -87,3 +87,21 @@ const deletedTodosArray = produce(todosArray, draft => {
     }
 })
 ```
+
+## 4.6. Принцип "положительное утверждение"
+- Принцип "положительное утверждение" часто делает код более легким для восприятия.
+- В большинстве случаев код лучше читается от истины (true), а написание логики от обратного (false) заставляет задуматься
+
+```ts showLineNumbers {4, 10}
+// ❌
+<button onClick={addProductToCartHandler} >
+      <img src={cartWhite} alt="" />
+      {!isProductInCart ? 'Add to cart' : 'Go to cart'}
+</button>
+
+// ✅
+<button onClick={addProductToCartHandler} >
+      <img src={cartWhite} alt="" />
+      {isProductInCart ? 'Go to cart' : 'Add to cart'}
+</button>
+```
