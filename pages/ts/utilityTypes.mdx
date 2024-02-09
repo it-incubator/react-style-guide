@@ -3,7 +3,9 @@ import { Callout } from 'nextra/components'
 # 6.3. Utility Types
 
 <Callout type={'info'} emoji={'🔗'}>
-  [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+  - [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+  - [Habr статья](https://habr.com/ru/articles/711686/)
+  
 </Callout>
 
 ## 6.3.1. Partial
@@ -119,3 +121,23 @@ const Object = {
 
 type Object = Record<string, unknown>
 ```
+## 6.3.6. ReturnType
+<Callout>
+  `ReturnType` - это тип данных, который определяет тип значения, возвращаемого из функции или метода.
+  Он указывает на тип данных, который функция вернет при выполнении.
+  
+</Callout>
+
+```ts showLineNumbers filename="ReturnType.ts"
+function multiply(a: number, b: number) {
+    return a * b;
+}
+
+type Utility = ReturnType<typeof multiply>;
+```
+1. Оператор `typeof` типизирует функцию
+![typeof](https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/c3b3b2ac-0fc2-45d0-9ab9-81da7ea16a70_returnType-2.png)
+
+
+2. `ReturnType` берет возвращаемое значение из типа выше
+![returnType](https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/59acb095-a040-48ac-908e-8abf57b46b93_returnType-1.png)
