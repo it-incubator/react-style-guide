@@ -120,7 +120,7 @@ type Student = User & {
 }
 
 ```
-![](./images/notPrettified.png)
+![notPrettified](https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/866998f3-e0a3-42a6-8b10-2e579738a295_notPrettified.png)
 
 ```ts showLineNumbers filename="prettify.ts"
 // ✅ Good for prettifying and easier reading intersected types
@@ -140,8 +140,8 @@ type Student = User & {
 type PrettifiedStudent = Prettify<Student>
 
 ```
-![](./images/prettify.png)
+![prettify](https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/475b24f9-8c21-4510-84a2-4a4e55d3e321_prettify.png)
 
 ## 6.1.7. Wrapper types (`String`, `Boolean`, `Number`)
 
-❗ Для примитивов никогда не используем [wrapper types](https://google.github.io/styleguide/tsguide.html#wrapper-types)
+❗ Для типизации примитивов никогда не используем [wrapper types](https://google.github.io/styleguide/tsguide.html#wrapper-types)
