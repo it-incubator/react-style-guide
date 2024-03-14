@@ -8,5 +8,6 @@
   "comments": "7. Комментарии",
   "commits": "8. Соглашение о коммитах",
   "import-export": "9. Import / export",
-  "package-manager": "10. Пакетные менеджеры"
+  "package-manager": "10. Пакетные менеджеры",
+  "pull-request": "11. Pull requests"
 }
