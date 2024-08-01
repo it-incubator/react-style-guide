@@ -103,7 +103,7 @@ type MyRecord = Record<Keys, Values>;
 ```
 
 2. Примеры использования `Record`
-```ts showLineNumbers filename="record.ts"
+```ts showLineNumbers filename="record.ts" /Record/
 // ❌
 type TasksState = {
   [key: string]: Task[]
@@ -112,8 +112,29 @@ type TasksState = {
 // ✅
 type TasksState2 = Record<string, Task[]>
 
-// Как типизировать объект в котором свойства и значения могут быть любые ?
+```
 
+Удобно использовать когда в качестве ключа используются перечисления
+
+```ts showLineNumbers filename="record.ts" /Record/
+type Role = 'admin' | 'user' | 'guest';
+
+interface UserInfo {
+    id: number;
+    name: string;
+}
+
+const users: Record<Role, UserInfo> = {
+    admin: { id: 1, name: 'Alice' },
+    user: { id: 2, name: 'Bob' },
+    guest: { id: 3, name: 'Charlie' }
+};
+
+```
+
+Типизация объекта в котором свойства и значения могут быть любые
+
+```ts showLineNumbers filename="record.ts" /Record/
 const Object = {
   a1: 'a1',
   b2: 2,
@@ -122,6 +143,8 @@ const Object = {
 
 type Object = Record<string, unknown>
 ```
+
+
 ## 6.3.6. ReturnType
 <Callout type={'info'}>
   [ReturnType](https://www.typescriptlang.org/docs/handbook/utility-types.html#returntypetype) - это тип данных,
