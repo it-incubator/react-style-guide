@@ -1,13 +1,15 @@
 {
   "index": "1. Главная страница",
-  "format": "2. Prettier, eslint, stylelint",
-  "naming": "3. Нейминг",
-  "common": "4. Общие правила",
-  "react": "5. React правила",
-  "ts": "6. Typescript",
-  "comments": "7. Комментарии",
-  "commits": "8. Соглашение о коммитах",
-  "import-export": "9. Import / export",
-  "package-manager": "10. Пакетные менеджеры",
-  "pull-request": "11. Pull requests"
+  "naming": "2. Нейминг",
+  "common": "3. Общие правила",
+  "react": "4. React правила",
+  "ts": "5. Typescript",
+  "commits": "6. Соглашение о коммитах",
+  "pull-request": "7. Pull requests",
+  "import-export": "8. Import / export",
+  "package-manager": "9. Пакетные менеджеры",
+  "comments": "10. Комментарии",
+  "format": {
+    "display": "hidden"
+  }
 }
